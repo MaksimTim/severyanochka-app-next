@@ -10,6 +10,7 @@
     "lint:fix": "eslint --fix"
   },
   "dependencies": {
+    "@iminside/react-yandex-maps": "^1.2.7",
     "motion": "^12.23.24",
     "next": "16.0.1",
     "react": "19.2.0",
