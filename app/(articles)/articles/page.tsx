@@ -1,32 +1,28 @@
-import {Article} from "@/types/articles";
 import React from "react";
 import {fetchArticles} from "@/app/(articles)/fetchArticles";
-import {ArticlesSection} from "@/app/(articles)/ArticlesSection";
 import type {Metadata} from "next";
+import {GenericListPage} from "@/app/(products)/GenericListPage";
 
 export const metadata: Metadata = {
     title: "Articles Северяночка",
     description: "Покупка и доставка продуктов питания",
 };
 
-const AllArticles = async () => {
-    let articles: Article[] = [];
-    let error = null;
-
-    try {
-        articles = await fetchArticles();
-    } catch (err) {
-        error = 'Ошибка получения статей'
-        console.log(err)
-    }
-
-    if (error) {
-        return <div>Ошибка: {error}</div>
-    }
-
+const AllArticles = async ({
+                               searchParams
+                           }: { searchParams: Promise<{ page?: string; itemsPerPage?: string }> }) => {
     return (
-        <ArticlesSection articles={articles} title="All Articles" viewAllButton={{text: 'Go to main', href: '/'}} />
-    );
+        <GenericListPage
+            searchParams={searchParams}
+            props={{
+                fetchData: () => fetchArticles(),
+                pageTitle: "All articles",
+                basePath: "/articles",
+                errorMessage: "Something went wrong",
+                contentType: 'articles'
+            }}
+        />
+    )
 };
 
 export default AllArticles;

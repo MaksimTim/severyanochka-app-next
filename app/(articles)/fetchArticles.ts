@@ -1,4 +1,4 @@
-import {Article} from "@/types/articles";
+import {Article} from "@/types/articleCardProps";
 
 export const fetchArticles = async () => {
     try {

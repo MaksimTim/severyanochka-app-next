@@ -1,6 +1,7 @@
 import React from "react";
 import {fetchProductsByCategory} from "@/app/(products)/fetchProducts";
 import {ProductsSection} from "@/app/(products)/ProductsSection";
+import {shuffleArray} from "@/utils/shuffleArray";
 
 export const Actions = async () => {
     let products;
@@ -15,7 +16,7 @@ export const Actions = async () => {
         <ProductsSection
             title="Акции"
             viewAllButton={{text: 'all actions', href: '/actions'}}
-            products={products}
+            products={shuffleArray(products)}
             compact={true}
         />
     );

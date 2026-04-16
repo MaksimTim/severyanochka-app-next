@@ -1,23 +1,21 @@
 import React from "react";
-import {ProductsSection} from "@/app/(products)/ProductsSection";
 import {fetchPurchases} from "@/app/(user)/fetchPurchases";
+import {GenericListPage} from "@/app/(products)/GenericListPage";
 
-const AllNew = async () => {
-    let purchases;
-
-    try {
-        purchases = await fetchPurchases();
-    } catch {
-        return <div>Ошибка</div>;
-    }
-
+const AllPurchases = async ({
+                                searchParams
+                            }: { searchParams: Promise<{ page?: string; itemsPerPage?: string }> }) => {
     return (
-        <ProductsSection
-            title="all purchases"
-            viewAllButton={{text: 'Go to main', href: '/'}}
-            products={purchases}
+        <GenericListPage
+            searchParams={searchParams}
+            props={{
+                fetchData: ()=> fetchPurchases(),
+                pageTitle: "All purchases",
+                basePath: "/purchases",
+                errorMessage: "Something went wrong",
+            }}
         />
-    );
+    )
 };
 
-export default AllNew;
+export default AllPurchases;

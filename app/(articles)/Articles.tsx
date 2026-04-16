@@ -1,4 +1,4 @@
-import {Article} from "@/types/articles";
+import {Article} from "@/types/articleCardProps";
 import React from "react";
 import {ArticlesSection} from "@/app/(articles)/ArticlesSection";
 import {fetchArticles} from "@/app/(articles)/fetchArticles";

@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from "next/image";
-import {Article} from "@/types/articles";
+import {Article} from "@/types/articleCardProps";
 
 interface ArticleCardProps {
     article: Article

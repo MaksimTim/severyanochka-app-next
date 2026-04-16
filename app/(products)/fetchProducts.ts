@@ -11,7 +11,7 @@ export const fetchProductsByCategory = async (category: string) => {
 
        const availableProducts: ProductCardProps[] = products.filter(product => product.quantity > 0);
 
-       return shuffleArray(availableProducts);
+       return availableProducts;
     } catch (err) {
         console.log(err)
         throw err;

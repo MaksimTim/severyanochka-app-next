@@ -1,29 +1,28 @@
 import React from "react";
 import {fetchProductsByCategory} from "@/app/(products)/fetchProducts";
-import {ProductsSection} from "@/app/(products)/ProductsSection";
 import type {Metadata} from "next";
+import {GenericListPage} from "@/app/(products)/GenericListPage";
 
 export const metadata: Metadata = {
     title: "Actions Северяночка",
     description: "Покупка и доставка продуктов питания",
 };
 
-const AllActions = async () => {
-    let products;
-
-    try {
-        products = await fetchProductsByCategory('actions');
-    } catch {
-        return <div>Ошибка</div>;
-    }
-
+const AllActions = async ({
+   searchParams
+}: { searchParams: Promise<{ page?: string; itemsPerPage?: string }> }) => {
     return (
-        <ProductsSection
-            title="All actions"
-            viewAllButton={{text: 'Go to main', href: '/'}}
-            products={products}
+        <GenericListPage
+            searchParams={searchParams}
+            props={{
+                fetchData: ()=> fetchProductsByCategory("actions"),
+                pageTitle: "All Actions",
+                basePath: "/actions",
+                errorMessage: "Something went wrong",
+            }}
+
         />
-    );
+    )
 };
 
 export default AllActions;
