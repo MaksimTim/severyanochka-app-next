@@ -1,8 +1,8 @@
 "use client"
 
 import {motion} from "framer-motion";
-import {SlideOne} from "@/components/Slider/SlideOne";
-import {SlideTwo} from "@/components/Slider/SlideTwo";
+import {SlideOne} from "@/components/slider/SlideOne";
+import {SlideTwo} from "@/components/slider/SlideTwo";
 
 export const Slider = () => {
     const slides = [<SlideOne key="slide1" />, <SlideTwo key="slide2" />];
